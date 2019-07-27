@@ -1,0 +1,350 @@
+@charset "utf-8";
+/* CSS Document */
+
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900&display=swap');
+
+*{ box-sizing:border-box; }
+body{
+    margin:0; padding:0;
+    font-family: 'Noto Sans KR', sans-serif;  color:#fff;
+    background:linear-gradient(to right bottom, #df665d 1%, #ffcf04 90%, #df665d 10%); /* #ff541f;  #ffcf04; */
+}
+
+/*------------------------------헤더------------------------------------*/
+header{
+    width:100%; height:100vh;   
+}
+
+/*------ 타이틀 글씨(Web Publisher Park Eun Jae) ------*/
+header .header_title{  /* 'Web Publisher / Park Eun Jae' 감싼 박스 */  
+    width:100%; height:100%;
+    padding:0 20px;
+}
+
+header .header_title h1{  /* 'Web Publisher' */ 
+    margin:0; padding:0;
+    font-size:250px; font-weight:900; line-height:120%;
+}
+header .header_title h2{  /* 'Park Eun Jae' */ 
+    margin:0; padding:0;
+    font-size:220px; font-weight:900; line-height:90%; text-align:right;
+    position:absolute;
+        bottom:100px; right:20px;
+}
+
+/*------ 좌우 배치된 작은 글씨 (HELLO, I'M EUN JAE PARK) ------*/
+header .header_vertical_text{  /* 'HELLO, I'M EUN JAE PARK' 감싼 박스 */  
+    width:100%; height:100%;
+    position:fixed; top:0; left:0;
+}
+
+header .header_vertical_text p{  /* 'HELLO,/ I'M EUN JAE PARK' 글씨 각각  */ 
+    margin:0;
+    font-size:20px; color:rgba(255, 255, 255, .6);
+    transform:rotate(-90deg); 
+}
+header .header_vertical_text .text1{  /* 'HELLO,' 글씨 */
+    position:absolute;
+        left:-10px; bottom:80px;
+}
+header .header_vertical_text .text2{  /* 'I'M EUN JAE PARK' 글씨 */
+    position:absolute;
+        right:-47px; top:120px;
+}
+
+
+
+/*----------------------------네비게이션----------------------------------*/
+nav{ 
+    width:100%; height:100%;
+}
+
+/*--------------- 좌측 햄버거버튼(menu버튼) ------------*/
+nav .hambuger_button{ /* 좌측 햄버거버튼 감싼 박스 */   
+    font-size:35px; 
+    position:fixed;
+        left:-10px; top:50%; transform:translateY(-50%);
+    cursor:pointer;  
+}
+/*햄버거버튼 마우스오버시 효과*/
+nav .hambuger_button i{ transition:.3s; }
+nav .hambuger_button:hover i{
+    transform:translateX(15px);
+}
+/*햄버거버튼 마우시오버시 아래 menu글씨 뜨게 함*/
+nav .hambuger_button p{
+    margin:0; 
+    font-size:12px; font-weight:300; line-height:100%;
+    opacity:0;
+    transition:.3s;
+}
+nav .hambuger_button:hover p{ opacity:1; transform:translate(15px);}
+
+/*-------------------- 메뉴박스 ------------------------*/
+nav .menu_box{  /* menu 전체 박스(주황반투명배경) */  
+    width:100%; height:100%;
+    background:#fff;
+    position:fixed; left:0; top:0; 
+    transition:.7s ease;
+}
+
+/* 메인메뉴 */  /* 메뉴 리스트(li) 각각의 위아래 간격 css+html에서 줌 */   
+nav .menu{  /* 메뉴(ul) */ 
+    width:700px; 
+    margin:0 auto; padding:0;
+    background:#fff;
+    list-style:none;
+    position:absolute; left:55%; top:50%; transform:translate(-55%, -50%);  /* relative따로안줌.따라서 nav가 relative. */
+}
+nav .menu li{  /* 메뉴리스트(li) */ 
+    font-size:80px; font-weight:500; line-height:200%; 
+    position:relative;  /* absolute=(nav .menu span:before, span:after) */ 
+}
+
+nav .menu a{
+    text-decoration:none; color:#000;  /* rgba(239, 178, 12, 1); */
+}
+
+/* 메뉴 목록(li)앞에 오는 숫자번호 사이즈 설정 */
+nav .menu .number{  /* 서브메뉴 목록(li)앞에 오는 숫자 각각(1~4) */ 
+    font-size:20px; color:#ff541f;
+    position:absolute; top:-20px; left:-25px;
+}
+
+/* 서브메뉴 */
+nav .submenu{  /* 메뉴(ul) */
+    list-style:none;
+}
+nav .submenu li{  /* 메뉴리스트(li) */
+    font-size:50px; font-weight:300; line-height:150%;
+}
+
+
+/* 메인메뉴리스트 각각(span)에 마우스 오버시 효과 */
+nav .menu a{ 
+    margin:0; 
+    position:relative;  /* 마우스오버시 줄 긋기위함 */
+    cursor:pointer; transition:.5s; 
+}
+nav .menu a:before, a:after{  /* 선 스타일 설정 */
+    content:'';
+    position:absolute;  /* relative=(nav .menu li)*/
+    width:0; height:8px; top:60%; transform:translateY(-60%);
+    margin-top:-.5px;
+    background:#fff;
+}
+nav .menu a:before{  /* 왼쪽에서부터 선 생김 */
+    left:0;  /* 선 시작하는 위치 */
+}
+nav .menu a:after{  /* 오른쪽으로 선 사라짐 */
+    right:-10%; /* 선 끝나는 위치 */
+    background:#ff541f; /* #ef410c */
+    transition:width .3s cubic-bezier(.22, .61, .36, 1);  /* 선 오른쪽으로 사라지는 속도 */
+}
+nav .menu a:hover:before{ /* 마우스 오버시 선 생김 */
+    background:#ff541f;   /* rgba(128, 12, 239, .95); */  /* #b20cef */
+    width:110%;  /* span의 100%만큼 width 줌 */
+    transition:width .5s cubic-bezier(.22, .61, .36, 1);  /* 선 왼쪽에서 오른쪽으로 생기는 속도 */
+}
+nav .menu a:hover:after{  /* 마우스 치우면 선 사라짐 */
+    background:transparent;
+    width:100%;  /* span의 100%만큼 width 줌 */
+    transition:0s;
+}
+/* 서브메뉴리스트 각각(span)에 마우스 오버시 효과 */
+nav .submenu a{ 
+    margin:0; 
+    position:relative;  /* 마우스오버시 줄 긋기위함 */
+    cursor:pointer; transition:.5s; 
+}
+nav .submenu a:before, .submenu a:after{  /* 선 스타일 설정 */
+    content:'';
+    position:absolute;
+    width:0; height:6px; top:60%; transform:translateY(-60%);
+    margin-top:-.5px;
+    background:#fff;
+}
+nav .submenu a:before{  /* 왼쪽에서부터 선 생김 */
+    left:0;  /* 선 시작하는 위치 */
+}
+nav .submenu a:after{  /* 오른쪽으로 선 사라짐 */
+    right:-10%; /* 선 끝나는 위치 */
+    background: rgba(128, 12, 239, .7); /* rgba(239, 65, 12, .7); */ /* #ef410c */
+    transition:width .3s cubic-bezier(.22, .61, .36, 1);  /* 선 오른쪽으로 사라지는 속도 */
+}
+nav .submenu a:hover:before{ /* 마우스 오버시 선 생김 */
+    background:rgba(128, 12, 239, .7);  /* #b20cef */
+    width:110%;  /* span의 100%만큼 width 줌 */
+    transition:width .5s cubic-bezier(.22, .61, .36, 1);  /* 선 왼쪽에서 오른쪽으로 생기는 속도 */
+}
+nav .submenu a:hover:after{  /* 마우스 치우면 선 사라짐 */
+    background:transparent;
+    width:100%;  /* span의 100%만큼 width 줌 */
+    transition:0s;
+}
+
+/* 좌측 WebPublisher:PEJ 로고 */
+nav .menu_box .logo{  /* 'WebPublisher:PEJ' 감싼 박스  */ 
+    width:400px;
+    margin:0;
+    position:absolute; left:-100px; top:0;
+    font-size:20px; color:#000;
+    transform:rotate(-90deg);
+}
+/* 우측 WebPublisher:PEJ 로고 */
+nav .menu_box .logo2{  /* 'WebPublisher:PEJ' 감싼 박스  */  
+    width:400px;
+    margin:0;
+    position:absolute; right:-100px; bottom:50px;
+    font-size:20px; color:#000;
+    transform:rotate(-90deg);
+}
+
+/*-----우측 close(X)버튼--------*/
+nav .menu_box .close_button{  /* close버튼 감싼 박스 */  
+    font-size:150px; font-weight:300; color:#ff541f;  /* #efb20c; */
+    position:absolute;
+        right:5%; top:1%; transform:translateY(-1%);
+}
+nav .menu_box .close_button p{  /* '×'글씨박스 */
+    margin:0; line-height:100%; 
+    cursor:pointer;
+    transition:.5s;
+}
+nav .menu_box .close_button p:hover{  /* '×'에 마우스 오버시 효과 */
+    transform:rotate(90deg); 
+    font-weight:400; color:#ef410c;
+}
+
+/*-------------------------섹션1(AOUT ME)-------------------------------*/
+#about_me{  /* section1 전체 박스 */   
+    width:1300px; height:900px;
+    margin:-350px auto 0; padding:350px 50px 0;
+}
+
+#about_me h4{  /* 'ABOUT ME'(타이틀) */
+    margin:0;
+    font-size:200px; font-weight:900; line-height:90%;
+}
+/* ABOUT ME 내용 */
+#about_me .box1{  /* ABOUT ME 타이틀+내용 감싼 박스 */    
+    width:810px;
+    margin:-160px 0 0 auto;
+    text-align:left;
+}
+
+#about_me .box1 p{  /* about me 내용  */  
+    margin:0; padding:0;
+    font-size:26px; font-weight:300; line-height:130%; 
+}
+
+#about_me .box1 h5{ /* 'DATE OF BIRTH/EDUCATION'글씨 */  
+    margin:0; padding:0;
+    font-size:35px; font-weight:400; line-height:150%;
+}
+
+
+
+/*-------------------------섹션2(SKILLS)-------------------------------*/
+#skills{ /* skills 전체 감싼 박스 */ 
+    width:1300px; height:890px;
+    margin:-230px auto 0; padding:350px 50px 70px;
+}
+#skills h4{  /* 'SKILLS' (타이틀) */ 
+    width:100%; 
+    margin:0 ;
+    font-size:200px; font-weight:900; line-height:90%; text-align:right;
+}
+
+/* 원 다섯개(마우스오버시 HTML/CSS..../ 글씨보임) */
+#skills .box1{  /* 원5개 감싼 박스 */  
+    width:90%;
+    margin:120px auto 0;
+    display:flex; justify-content:space-between;
+}
+#skills .box1 .box1_circle{  /* 원 각각(5개) */  
+    width:70px; height:70px;
+    border-radius:50%; background:#eee;
+    cursor:pointer !important; 
+}
+#skills .box1 .box1_circle:hover{  /* 원 각각(5개) */  
+    transform:scale(1.1, 1.1);
+}
+
+/* 'HTML / CSS / JS / PS / AI' */
+#skills .hiddenbox{  /* 'SKILLS / CSS / JS / PS / AI' 감싼 박스 */  
+    width:90%;
+    margin:-70px auto 0; 
+    display:flex; justify-content:space-between;
+}
+#skills .hiddenbox .text{  /* 'SKILLS / CSS / JS / PS / AI' 글씨 각각 */   
+    width:100px;
+    margin:0;
+    font-size:30px; font-weight:700;  line-height:130%; text-align:center;
+}
+
+
+/* html/css/js/ps/ai에 대한 각각 설명(마우스 오버시 보임) */
+#skills .box3{ /* 각 설명들 감싼 박스 */    border:.1px solid #00f;  
+    width:100%; 
+    margin:0 auto;  padding:50px 0; 
+}
+
+#skills .box3 p{  /* 각 부연설명 */   
+    margin:0 0 0 auto;
+    font-size:20px; font-weight:400; 
+}
+
+
+
+
+
+
+/*-------------------------섹션3(PORTFOLIO)-------------------------------*/
+#portfolio{  /* portfolio 전체 감싼 박스 */  
+    width:1300px; height:1100px;
+    margin:20px auto; padding:0 50px;
+}
+#portfolio h4{  /* 'PORTFOLIO' (타이틀) */
+    margin:0 ;
+    font-size:200px; font-weight:900; line-height:85%; text-align:left;
+}
+
+/* 사이트 정보 감싼 박스( 사이트이미지 + 사이트이름 ) */
+#portfolio .box1{  /* 사이트이미지 + 사이트제목 감싼 박스 */  
+    width:100%;
+    margin:20px 0;
+    display:flex; 
+}
+/*사이트이미지*/
+#portfolio .box1 .box1_1{  /* 사이트 캡쳐 이미지 모두 감싼 박스 */
+    width:50%;
+    margin:0 0 0 auto;
+}
+#portfolio .box1 .box1_1 .image{ /* 각각 사이트캡쳐이미지 */
+    display:none;
+}
+#portfolio .box1 .box1_1 img{  /* 사이트 캡쳐 이미지 */
+    width:100%;
+}
+/*사이트이름*/
+#portfolio .box1 .box1_2{  /* 사이트 제목 모두 감싼 박스 */  
+    width:50%; height:400px;
+    margin:auto 0 0 0; 
+}
+#portfolio .box1 .box1_2 .text{  /* jinair / web publisher:pej 사이트 제목 각각 감싼 박스 */ 
+    width:100%; height:200px; opacity:.5;
+}
+#portfolio .box1 .box1_2 .text h5{  /* 'Jinair:' / 'Web Publisher ParkEunJae' 글씨 */
+    margin:0 0 20px 0;
+    font-size:35px; font-weight:500; line-height:100%; text-align:left; 
+    cursor:pointer;
+}
+
+#portfolio .box1 .box1_2 .text p{  /* '(:아래줄)' 글씨 */
+    margin:0;
+    font-size:25px; font-weight:300; line-height:120%; text-align:left;
+}
+
+
+/*-------------------------섹션4(CONTACT)-------------------------------*/
